@@ -42,14 +42,14 @@ const config = {
 
 function AuthView() {
 
-        const value = useContext(AppContext)
+    const value = useContext(AppContext)
     const handleAuth = async () => {
 
         // alert('you tapped button')
         console.log('handle auth 2')
 
 
-        console.log(value)
+        // console.log(value)
         // try {
         //   const authState = await authorize(config)
         //   console.log(authState)
@@ -61,32 +61,35 @@ function AuthView() {
 
     return (
 
-        <Button onPress={handleAuth} title='LOOOO' />
+        <View>
+
+
+            {/* <Button onPress={handleAuth} title='LOOOO' /> */}
+            <Text>{value}</Text>
+        </View>
     )
 }
 
-const Account = () => {
+const Account = (props: any) => {
     const isDarkMode = useColorScheme() === 'dark';
 
+    const { handleTheme } = props;
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
 
 
     return (
-
-
         <SafeAreaView style={backgroundStyle}>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 style={backgroundStyle}>
-                <AuthView />
+                <AuthView /> 
+                <Button onPress={handleTheme} title='WOORDD' />
             </ScrollView>
 
         </SafeAreaView>
-
-
     );
 };
 

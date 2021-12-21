@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState} from 'react';
 import { AppContext } from './AppContext';
 import {
   SafeAreaView,
@@ -25,21 +25,21 @@ import Account from './Account'
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const [theme, setTheme] = useState("red")
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
 
   return (
-    <AppContext.Provider value={"dark"}>
+    <AppContext.Provider value={theme}>
 
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
-          <Account />
+          <Account handleTheme={() => setTheme('blue')}/>
         </ScrollView>
       </SafeAreaView>
 
