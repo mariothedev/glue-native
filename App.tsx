@@ -25,21 +25,21 @@ import Account from './Account'
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [theme, setTheme] = useState("red")
+  const [response, setResponse] = useState("red")
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
 
   return (
-    <AppContext.Provider value={theme}>
+    <AppContext.Provider value={response}>
 
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
-          <Account handleTheme={() => setTheme('blue')}/>
+          <Account handleResponse={(value: any) => setResponse(value)}/>
         </ScrollView>
       </SafeAreaView>
 
